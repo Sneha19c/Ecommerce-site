@@ -8,18 +8,18 @@ export const Cart = () => {
         setIsExpand(!isExpand);
     }
     return (
-        <>
+        <div className='fixed inset-0 z-50'>
             {
                 !isExpand ?
                     <button
-                        className='absolute z-10 items-end right-1 bg-black w-16 h-16 p-2 hover:opacity-80'
+                        className='absolute items-end right-1 bg-black w-16 h-16 p-2 hover:opacity-80'
                         onClick={handleClick}
                     >
                         <img src={cart_icon} alt="cart" />
                         <span className='absolute top-10 px-1.5 text-sm font-bold rounded-full bg-yellow-300 sha'>1</span>
 
                     </button> :
-                    <div className='flex flex-col absolute right-1 text-white w-full md:w-2/5  bg-[#22252b] h-full'>
+                    <div className='flex flex-col absolute right-1 text-white w-full md:w-2/5  bg-[#16181c] h-full'>
                         <button className="flex items-start bg-stone-800 py-2 px-4 w-10 font-extrabold shadow-xl hover:opacity-80" onClick={handleClick}>X</button>
                         <div className='flex justify-center p-8'>
                             <img src={cart_icon} alt="cart" className='w-10 h-12' />
@@ -57,7 +57,7 @@ export const Cart = () => {
                     </div>
             }
 
-        </>
+        </div>
 
     )
 }
