@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { ProductItemType } from '../../App';
+import shopContext from '../../context';
 
 type Props = {
   cartItem: ProductItemType;
+};
+
+type handles = {
   increase: (productItem: ProductItemType) => void;
   decrease: (productItem: ProductItemType) => void;
   handleRemoveItem: (productId: number) => void;
 };
 
-const CartProduct = ({
-  cartItem,
-  increase,
-  decrease,
-  handleRemoveItem,
-}: Props) => {
+const CartProduct = ({ cartItem }: Props) => {
+  const { increase, decrease, handleRemoveItem }: handles =
+    useContext(shopContext);
+
   return (
     <div className='flex justify-between items-start border-t-2 border-zinc-700 mx-2 p-2 shadow-lg'>
       <div className='flex justify-start'>

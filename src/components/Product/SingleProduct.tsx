@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ProductItemType } from '../../App';
+import shopContext from '../../context';
 
 type Props = {
   product: ProductItemType;
+};
+
+type handle = {
   handleAddToCart: (productItem: ProductItemType) => void;
 };
 
-export const SingleProduct = ({ product, handleAddToCart }: Props) => {
+export const SingleProduct = ({ product }: Props) => {
+  const { handleAddToCart }: handle = useContext(shopContext);
+
   return (
     <div className='product w-52 h-[30rem] flex justify-center flex-col'>
       <img

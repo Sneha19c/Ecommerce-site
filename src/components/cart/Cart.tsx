@@ -1,22 +1,18 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import cart_icon from '../../assets/cart-icon.png';
 
 import { ProductItemType } from '../../App';
 import CartProduct from './CartProduct';
 
-type Props = {
-  cartItems: ProductItemType[];
-  increase: (productItem: ProductItemType) => void;
-  decrease: (productItem: ProductItemType) => void;
-  handleRemoveItem: (productId: number) => void;
-};
+import shopContext from '../../context';
 
-export const Cart = ({
-  cartItems,
-  increase,
-  decrease,
-  handleRemoveItem,
-}: Props) => {
+// type Props = {
+//   cartItems: ProductItemType[];
+// };
+
+export const Cart = () => {
+  const { cartItems } = useContext(shopContext);
+
   const [isExpand, setIsExpand] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -62,12 +58,7 @@ export const Cart = ({
           )}
           <div className='overflow-auto w-scrollbar h-2/5 mb-10'>
             {cartItems.map((cartItem: ProductItemType) => (
-              <CartProduct
-                cartItem={cartItem}
-                increase={increase}
-                decrease={decrease}
-                handleRemoveItem={handleRemoveItem}
-              />
+              <CartProduct cartItem={cartItem} />
             ))}
           </div>
 
